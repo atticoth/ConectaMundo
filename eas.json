@@ -10,14 +10,7 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {
-      "ios": {
-        "distribution": "store"
-      },
-      "android": {
-        "distribution": "store"
-      }
-    }
+    "production": {}
   },
   "submit": {
     "production": {}

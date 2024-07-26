@@ -1,16 +1,17 @@
 import { Asset } from 'expo-asset';
 import Constants from 'expo-constants';
-import { CodedError, Platform } from 'expo-modules-core';
+import { CodedError } from 'expo-modules-core';
+import { Platform } from 'react-native';
 
 import ExpoFontLoader from './ExpoFontLoader';
 import { FontResource, FontSource } from './Font.types';
 
-const isInExpoGo = Constants.appOwnership === 'expo';
+const isInClient = Constants.appOwnership === 'expo';
+const isInIOSStandalone = Constants.appOwnership === 'standalone' && Platform.OS === 'ios';
 
 export function fontFamilyNeedsScoping(name: string): boolean {
   return (
-    isInExpoGo &&
-    Platform.OS !== 'ios' &&
+    (isInClient || isInIOSStandalone) &&
     !Constants.systemFonts.includes(name) &&
     name !== 'System' &&
     !name.includes(Constants.sessionId)
