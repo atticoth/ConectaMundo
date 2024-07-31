@@ -19,7 +19,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.medeirosge.conectamundo"
+      "bundleIdentifier": "com.medeirosge.conectamundo",
+      "buildNumber": "3"
     },
     "splash": {
       "image": "./assets/images/applogo.png",
