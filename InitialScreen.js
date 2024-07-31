@@ -1,76 +1,76 @@
 import * as React from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Dimensions, Text } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export function InitialScreen({ navigation }) {
   const { width, height } = Dimensions.get('window');
 
   return (
+    <LinearGradient
+      colors={['#003293', '#00134d', '#3f1048']}
+      style={styles.backgroundGradient}
+    >
     <View style={styles.container}>
-      <View style={styles.imageContainerHeader}>
-        <Image source={require('./assets/images/logoabertura.png')} style={styles.image} resizeMode="contain" />
+      <View style={[styles.imageContainer, { height: height * 0.4, marginTop: height * 0.05 }]}>
+        <Image source={require('./assets/images/logoabertura.png')} style={[styles.image, { width: width }]} resizeMode="contain" />
       </View>
-      <View style={[styles.buttonContainer, {marginTop: '0'}]}>
+      <View style={styles.buttonContainer}>
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: '#370e43', height: height * 0.1 }]}
+          style={[styles.button, { height: height * 0.08, width: width * 0.6 }]}
           onPress={() => navigation.navigate('TourismDetailsScreen')}
         >
           <Text style={styles.buttonText}>Cidades</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.imageContainerFooter}>
-        <Image source={require('./assets/images/rodapeNovo.png')} style={styles.image} resizeMode="contain" />
+      <View style={[styles.imageContainer, { height: height * 0.2, marginBottom: height * 0.05 }]}>
+        <Image source={require('./assets/images/rodapeNovo.png')} style={[styles.image, { width: width }]} resizeMode="contain" />
       </View>
     </View>
+
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  backgroundGradient: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'column',
+    justifyContent: 'center',
   },
-  header: {
-    backgroundColor: '#002882',
+  //container: {
+  //  flex: 1,
+  //  justifyContent: 'center',
+  //  alignItems: 'center',
+  //  paddingVertical: 20,
+  //  backgroundColor: '#3E1166', // Tom de roxo do botão para o fundo
+  //},
+  container: {
+    flexGrow: 1,
+    padding: Dimensions.get('window').width * 0.06,
+  },
+  imageContainer: {
     width: '100%',
-    alignItems: 'center',
-  },
-  headerText: {
-    color: '#e7ecff',
-    fontSize: 18,
-  },
-  imageContainerHeader: {
-    marginTop: -Dimensions.get('window').height * 0.14,
-    width: '100%',
-    alignItems: 'center',
-  },
-  imageContainerFooter: {
-    marginTop: -Dimensions.get('window').height * 0.01,
-    width: '100%',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   image: {
-    width: Dimensions.get('window').width, 
-    marginTop: -1,
+    width: '100%',
+    height: '100%',
+    flexShrink: 1,
   },
   buttonContainer: {
-    width: '80%',
-    justifyContent: 'flex-end',
-  },
-  button: {
-    marginBottom: Dimensions.get('window').height * 0.02,
+    marginVertical: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#3E1166', // Cor contrastante para o botão
     borderRadius: 10,
-    shadowColor: 'rgba(0, 0, 0, 0.2)',
-    shadowOffset: { width: 2, height: 2 },
-    shadowRadius: 3,
-    shadowOpacity: 1,
   },
   buttonText: {
-    color: 'white',
-    fontSize: 16,
+    color: 'white', // Cor do texto do botão para contraste com o fundo
+    fontSize: 25,
     fontWeight: 'bold',
   },
 });
